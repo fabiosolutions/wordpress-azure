@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://crplethora.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_c46f371ea4ec430694eacddb84cea781 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_38da26858b1e45cc9211ebdbb503d01e }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_9c88f8d9df6d44e4860184ac6b23d617 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_8b77ad6f2bc54a6d8fcc553140f1b705 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: crplethora.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c46f371ea4ec430694eacddb84cea781 }}/site-plet-bem-estar-coriandrix:${{ github.sha }}
+        tags: crplethora.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_9c88f8d9df6d44e4860184ac6b23d617 }}/mcr.microsoft.com/azure-app-service/windows/parkingpage:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'site-plet-bem-estar-coriandrix'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_fc943e0a2bdb403fb032c25e59e56e87 }}
-        images: 'crplethora.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_c46f371ea4ec430694eacddb84cea781 }}/site-plet-bem-estar-coriandrix:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cf09098a019d4ecbbc0d51287d7addf1 }}
+        images: 'crplethora.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_9c88f8d9df6d44e4860184ac6b23d617 }}/mcr.microsoft.com/azure-app-service/windows/parkingpage:${{ github.sha }}'
